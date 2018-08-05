@@ -1,23 +1,32 @@
 server:
   port: 8080
 
-
 zuul:
   debug:
     request: true
   routes:
     users:
-      path: /api/users/**
+      path: /users/**
       url: http://localhost:8081
+      stripPrefix: false
     login:
-      path: /api/login
+      path: /login
       url: http://localhost:8081
+      stripPrefix: false
     verfications:
-      path: /api/verfications
+      path: /verfications
       url: http://localhost:8081
+      stripPrefix: false
     todos:
-      path: /api/todos/**
+      path: /todos/**
       url: http://localhost:8082
       stripPrefix: false
-  sensitive-headers: 
+  sensitive-headers:
+  prefix: /api
 
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          netflix: TRACE
