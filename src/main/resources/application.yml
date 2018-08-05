@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+
+zuul:
+  debug:
+    request: true
+  routes:
+    users:
+      path: /api/users/**
+      url: http://localhost:8081
+    login:
+      path: /api/login
+      url: http://localhost:8081
+    verfications:
+      path: /api/verfications
+      url: http://localhost:8081
+    todos:
+      path: /api/todos/**
+      url: http://localhost:8082
+      stripPrefix: false
+  sensitive-headers: 
+
