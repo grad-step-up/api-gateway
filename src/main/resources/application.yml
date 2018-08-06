@@ -1,5 +1,14 @@
 server:
   port: 8080
+  context-path: /api
+
+ribbon:
+  eureka:
+    enabled: false
+
+user-service:
+  ribbon:
+    listOfServers: localhost:8081,localhost:8001
 
 zuul:
   debug:
@@ -7,26 +16,26 @@ zuul:
   routes:
     users:
       path: /users/**
-      url: http://localhost:8081
+      serviceId: user-service
       stripPrefix: false
     login:
       path: /login
-      url: http://localhost:8081
+      serviceId: user-service
       stripPrefix: false
     verfications:
       path: /verfications
-      url: http://localhost:8081
+      serviceId: user-service
       stripPrefix: false
     todos:
       path: /todos/**
       url: http://localhost:8082
       stripPrefix: false
   sensitive-headers:
-  prefix: /api
 
 logging:
   level:
     org:
       springframework:
+        security: TRACE
         cloud:
           netflix: TRACE
