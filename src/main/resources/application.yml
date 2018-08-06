@@ -1,6 +1,6 @@
 server:
   port: 8080
-
+  context-path: /api
 zuul:
   debug:
     request: true
@@ -22,11 +22,11 @@ zuul:
       url: http://localhost:8082
       stripPrefix: false
   sensitive-headers:
-  prefix: /api
 
 logging:
   level:
     org:
       springframework:
+        security: TRACE
         cloud:
           netflix: TRACE
