@@ -7,6 +7,15 @@ spring:
       port: 8500
       discovery:
         instance-id: ${spring.application.name}:${random.int}
+
+user-service:
+  ribbon:
+    listOfServers: localhost:8081
+todo-service:
+  ribbon:
+    listOfServers: localhost:8082
+
+
 server:
   port: 8080
 zuul:
