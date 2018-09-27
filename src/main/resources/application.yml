@@ -15,10 +15,20 @@ todo-service:
   ribbon:
     listOfServers: localhost:8082
 
-
 server:
   port: 8080
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
 zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 10000
   debug:
     request: true
   routes:
